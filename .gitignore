@@ -24,3 +24,7 @@ keystore.properties
 /avd/
 /androiduser/
 /.kotlin/
+
+# The sideloadable builds published for download on a phone (see README §2).
+# Everything else matching *.apk above stays untracked.
+!/dist/*.apk

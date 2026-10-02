@@ -102,6 +102,41 @@ usual cause (Play Protect rejecting an *Android Debug* signed, v2-only APK). If 
 6. **Android 8.0 or newer is required** (`minSdk 26`). On Android 7 or older the installer reports
    the same "App not installed" message.
 
+### Download the APK straight to the phone (no cable, no file transfer)
+
+Two sideloadable builds are published in `dist/` so the phone can fetch them directly:
+
+| File | Package | Why it exists |
+|---|---|---|
+| `dist/ImpelDown.apk` | `com.impel.touchlock` | the standard build |
+| `dist/ImpelDown-alt.apk` | `com.impel.impeldown` | fallback for ROMs that refuse the standard one |
+
+Open this on the phone and tap download — the browser saves it to `Download/`, a location the
+package installer can always read (unlike a file received inside WhatsApp, which lands under
+`Android/media/com.whatsapp/...` and often fails with "App not installed"):
+
+```
+https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown.apk
+https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown-alt.apk
+```
+
+The `-alt` build differs in exactly three ways, to rule out a Vivo/Oppo/ColorOS rejection caused
+by a hidden package record or a flagged permission:
+
+```kotlin
+applicationId = "com.impel.impeldown"   // was com.impel.touchlock
+versionName   = "1.0-alt"
+```
+```xml
+<!-- RECEIVE_BOOT_COMPLETED removed (start-on-boot is unavailable in this build) -->
+```
+```xml
+<string name="app_name">Impel Down Alt</string>
+```
+
+Both are signed with the same release certificate. Note that build outputs are otherwise
+git-ignored — only `dist/*.apk` is tracked, so refresh those two files after a rebuild.
+
 ---
 
 ## 3. Using it
