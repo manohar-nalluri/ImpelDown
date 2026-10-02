@@ -104,38 +104,39 @@ usual cause (Play Protect rejecting an *Android Debug* signed, v2-only APK). If 
 
 ### Download the APK straight to the phone (no cable, no file transfer)
 
-Two sideloadable builds are published in `dist/` so the phone can fetch them directly:
+`dist/` holds a ladder of builds, from full function down to least privilege. **Try them in order**
+— keep the first one Play Protect accepts. Each has its own package name and label, so they can
+coexist on the phone and you can tell them apart.
 
-| File | Package | Why it exists |
-|---|---|---|
-| `dist/ImpelDown.apk` | `com.impel.touchlock` | the standard build |
-| `dist/ImpelDown-alt.apk` | `com.impel.impeldown` | fallback for ROMs that refuse the standard one |
+| File | Package | Accessibility | Device admin | Sleep timer locks the phone? |
+|---|---|---|---|---|
+| `dist/ImpelDown.apk` | `com.impel.touchlock` | yes | yes | yes |
+| `dist/ImpelDown-lite.apk` | `com.impel.impeldown.lite` | **no** | yes | yes |
+| `dist/ImpelDown-min.apk` | `com.impel.impeldown.min` | **no** | **no** | no — counts down and notifies only |
 
-Open this on the phone and tap download — the browser saves it to `Download/`, a location the
-package installer can always read (unlike a file received inside WhatsApp, which lands under
-`Android/media/com.whatsapp/...` and often fails with "App not installed"):
+Open these on the phone; the browser saves them to `Download/`, a location the package installer
+can always read (unlike a file received inside WhatsApp, which lands under
+`Android/media/com.whatsapp/...` and frequently fails with "App not installed"):
 
 ```
 https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown.apk
-https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown-alt.apk
+https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown-lite.apk
+https://github.com/manohar-nalluri/ImpelDown/raw/main/dist/ImpelDown-min.apk
 ```
 
-The `-alt` build differs in exactly three ways, to rule out a Vivo/Oppo/ColorOS rejection caused
-by a hidden package record or a flagged permission:
+**Why the ladder exists.** Google Play Protect hard-blocks sideloaded APKs it has never seen when
+they declare the same capabilities malware wants. Three matter here: the **accessibility service**
+(can read screen content — Play Protect describes it as "access to sensitive data"), **device
+admin** (`force-lock`) and `SYSTEM_ALERT_WINDOW`. `-lite` drops the accessibility service, `-min`
+drops device admin as well. The overlay permission cannot be dropped — it *is* the app.
 
-```kotlin
-applicationId = "com.impel.impeldown"   // was com.impel.touchlock
-versionName   = "1.0-alt"
-```
-```xml
-<!-- RECEIVE_BOOT_COMPLETED removed (start-on-boot is unavailable in this build) -->
-```
-```xml
-<string name="app_name">Impel Down Alt</string>
-```
+If even `-min` is refused, the blocker is Play Protect rather than the APK: Play Store → profile
+picture → Play Protect → ⚙ → turn off *"Scan apps with Play Protect"*, install, then turn it back
+on.
 
-Both are signed with the same release certificate. Note that build outputs are otherwise
-git-ignored — only `dist/*.apk` is tracked, so refresh those two files after a rebuild.
+The variants are produced by temporary edits — a different `applicationId`, `versionName`, app
+label, and the manifest blocks above — which are reverted before committing, so the tracked source
+remains a single clean tree. Only `dist/*.apk` is un-ignored; refresh those files after a rebuild.
 
 ---
 
