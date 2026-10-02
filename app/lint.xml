@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!-- Adaptive icons (<adaptive-icon>) are only understood from API 26, but they must live in a
+         -v26 folder for AAPT2 to keep them: without the qualifier the resource is dropped and the
+         manifest reference fails to link. minSdk is already 26, so this warning is a false positive. -->
+    <issue id="ObsoleteSdkInt">
+        <ignore path="src/main/res/mipmap-anydpi-v26" />
+    </issue>
+</lint>

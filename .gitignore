@@ -1,0 +1,26 @@
+*.iml
+.gradle/
+.gradlehome/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.aab
+*.keystore
+/keystore/
+keystore.properties
+
+# Local test infrastructure used while developing this app (emulator + mirrored SDK bits).
+# None of it is part of the project.
+/dl/
+/tools/
+/wsdk/
+/avd/
+/androiduser/
+/.kotlin/

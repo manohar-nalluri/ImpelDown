@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Impel Down</string>
+
+    <string name="channel_name">Floating touch lock</string>
+    <string name="channel_desc">Keeps the floating bubble alive. Silent and ongoing.</string>
+
+    <string name="notif_running">Bubble active</string>
+    <string name="notif_running_text">Tap the bubble to lock touches</string>
+    <string name="notif_locked">Touches locked</string>
+    <string name="notif_locked_text">Hold the bubble 1.5 s to unlock</string>
+    <string name="notif_dim">Black dim on</string>
+    <string name="notif_action_lock">Lock</string>
+    <string name="notif_action_unlock">Unlock</string>
+    <string name="notif_action_dim">Black dim</string>
+    <string name="notif_action_stop">Quit</string>
+    <string name="notif_overlay_needed">Overlay permission needed</string>
+    <string name="notif_overlay_needed_text">Open Impel Down and grant "Display over other apps".</string>
+    <string name="notif_lock_failed">Could not lock the screen</string>
+    <string name="notif_lock_failed_text">Enable device admin (or the accessibility lock) in Impel Down.</string>
+
+    <string name="accessibility_label">Impel Down (optional)</string>
+    <string name="accessibility_desc">Optional. Used only to lock the screen with Android\'s lock action, and to keep the floating bubble visible while you use other apps. It never reads screen content.</string>
+
+    <string name="timer_set">Sleep timer: %1$d min</string>
+    <string name="timer_off">Sleep timer off</string>
+    <string name="timer_fired">Sleep timer: locking screen</string>
+    <string name="locked_toast">Touches locked — hold the bubble to unlock</string>
+    <string name="unlocked_toast">Touches unlocked</string>
+
+    <string name="menu_timer_off">Sleep timer: off</string>
+    <string name="menu_timer_active">Sleep timer: %1$s (tap to stop)</string>
+
+    <string name="settings_version">Impel Down %1$s · Android %2$s (API %3$d)\nNo network permission, no wakelocks, no analytics.</string>
+    <string name="label_size">Bubble size: %1$d dp</string>
+    <string name="label_alpha">Bubble opacity: %1$d %%</string>
+    <string name="label_idle_alpha">Idle opacity after 2 s (0 %% = invisible but still tappable): %1$d %%</string>
+    <string name="label_timer_running">Running — %1$s left.</string>
+    <string name="label_custom_minutes">%1$d</string>
+    <string name="battery_tip">If the bubble disappears after a while, the system (Xiaomi, Oppo, Vivo, Samsung…) killed it. Set Impel Down to “No restrictions” in the battery settings above. Also make sure the device admin or accessibility lock is enabled.</string>
+</resources>

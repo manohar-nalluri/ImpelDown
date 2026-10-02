@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The only XML layout in the app. Everything else is drawn on a Canvas.
+     All copy is inline on purpose: the app ships in English only, so there is nothing to
+     translate and no extra resource lookups. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="40dp">
+
+        <TextView
+            style="@style/Big"
+            android:text="@string/app_name" />
+
+        <TextView
+            style="@style/Body"
+            android:paddingTop="4dp"
+            android:text="A floating bubble that locks every touch, dims the screen to black, and locks the phone on a timer. No network, no ads, no background work." />
+
+        <!-- ============ Bubble ============ -->
+        <TextView style="@style/SectionHeader" android:text="1 · Floating bubble" />
+
+        <Button
+            android:id="@+id/btnService"
+            style="@style/Action"
+            android:text="Start bubble" />
+
+        <TextView
+            android:id="@+id/txtService"
+            style="@style/Body"
+            android:paddingTop="6dp" />
+
+        <!-- ============ Permissions ============ -->
+        <TextView style="@style/SectionHeader" android:text="2 · Permissions" />
+
+        <Button
+            android:id="@+id/btnOverlay"
+            style="@style/Action"
+            android:text="Grant “Display over other apps”" />
+
+        <TextView
+            android:id="@+id/txtOverlay"
+            style="@style/Body"
+            android:paddingTop="4dp" />
+
+        <Button
+            android:id="@+id/btnNotifications"
+            style="@style/Action"
+            android:text="Allow notifications" />
+
+        <TextView
+            android:id="@+id/txtNotifications"
+            style="@style/Body"
+            android:paddingTop="4dp" />
+
+        <Button
+            android:id="@+id/btnAdmin"
+            style="@style/Action"
+            android:text="Enable device admin (screen lock)" />
+
+        <TextView
+            android:id="@+id/txtAdmin"
+            style="@style/Body"
+            android:paddingTop="4dp" />
+
+        <Button
+            android:id="@+id/btnAccessibility"
+            style="@style/Action"
+            android:text="Optional: accessibility lock action" />
+
+        <TextView
+            android:id="@+id/txtAccessibility"
+            style="@style/Body"
+            android:paddingTop="4dp" />
+
+        <Button
+            android:id="@+id/btnBattery"
+            style="@style/Action"
+            android:text="Battery optimization settings" />
+
+        <TextView
+            android:id="@+id/txtBattery"
+            style="@style/Body"
+            android:paddingTop="4dp" />
+
+        <!-- ============ Bubble look ============ -->
+        <TextView style="@style/SectionHeader" android:text="3 · Bubble size &amp; opacity" />
+
+        <TextView
+            android:id="@+id/txtSize"
+            style="@style/Body" />
+
+        <SeekBar
+            android:id="@+id/seekSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="32" />
+
+        <TextView
+            android:id="@+id/txtAlpha"
+            style="@style/Body"
+            android:paddingTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekAlpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="70" />
+
+        <CheckBox
+            android:id="@+id/chkIdle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Fade the bubble after 2 s of inactivity" />
+
+        <TextView
+            android:id="@+id/txtIdleAlpha"
+            style="@style/Body"
+            android:paddingTop="6dp" />
+
+        <SeekBar
+            android:id="@+id/seekIdleAlpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100" />
+
+        <CheckBox
+            android:id="@+id/chkBoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Start the bubble automatically after reboot" />
+
+        <!-- ============ Sleep timer ============ -->
+        <TextView style="@style/SectionHeader" android:text="4 · Sleep timer" />
+
+        <TextView
+            android:id="@+id/txtTimer"
+            style="@style/Body" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnTimer5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/btnTimer10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="10" />
+
+            <Button
+                android:id="@+id/btnTimer15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="15" />
+
+            <Button
+                android:id="@+id/btnTimer30"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="30" />
+
+            <Button
+                android:id="@+id/btnTimer60"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="60" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <EditText
+                android:id="@+id/editMinutes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="custom minutes"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="4" />
+
+            <Button
+                android:id="@+id/btnTimerCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTimerCancel"
+            style="@style/Action"
+            android:text="Cancel timer" />
+
+        <!-- ============ Locking ============ -->
+        <TextView style="@style/SectionHeader" android:text="5 · Screen lock method" />
+
+        <RadioGroup
+            android:id="@+id/radioLockMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Device admin — lockNow() (simplest, works offline)" />
+
+            <RadioButton
+                android:id="@+id/radioA11y"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Accessibility — lock screen action (Android 9+)" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/chkZeroBrightness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Black dim: try 0 % brightness first (some devices switch the display off — it self-corrects to 1 %)" />
+
+        <TextView
+            style="@style/SectionHeader"
+            android:text="Known platform limits" />
+
+        <TextView
+            style="@style/Body"
+            android:text="• Overlays cannot block the power button, and some OEMs still let their own system gestures through while touches are locked.\n• Secure windows (banks, DRM video, some system dialogs) can hide overlays — the bubble simply is not drawn there, nothing crashes.\n• Android 12+ blocks touches that would pass through an untrusted overlay. The bubble only covers its own 52 dp circle, so the rest of the screen stays fully usable.\n• Android 14+ requires the “special use” foreground service type — already declared.\n• Xiaomi / Oppo / Vivo / Samsung aggressively kill background services: open the battery settings above and set Touch Lock to “No restrictions”." />
+
+        <TextView
+            android:id="@+id/txtVersion"
+            style="@style/Body"
+            android:paddingTop="18dp" />
+    </LinearLayout>
+</ScrollView>
